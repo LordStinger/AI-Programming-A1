@@ -20,20 +20,14 @@ public class PlaceShapeScript : MonoBehaviour
     {   
         if (!AIOverride) 
         {
-            // THIS IS TEMP - REMOVE LATER
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene("Main");
-            }
-
-            if (Input.GetMouseButtonDown(0)) // Left click
+            if (Input.GetMouseButtonDown(0)) 
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.CompareTag("Slot")) // Make sure slots have a "Slot" tag
+                    if (hit.collider.CompareTag("Slot")) 
                     {
                         CheckIfPlaceable(hit.collider.gameObject);
                     }

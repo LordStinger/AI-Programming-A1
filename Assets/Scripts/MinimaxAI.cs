@@ -23,12 +23,12 @@ public class MinimaxAI : MonoBehaviour
     {
         if (gameManager.onGoingGame)
         {
-            char aiSymbol = makeMoveAsPlayer ? 'X' : 'O'; // AI plays X or O based on game mode
+            char aiSymbol = makeMoveAsPlayer ? 'X' : 'O'; // AI plays X or O based on game mode.
             Vector2Int bestMove = GetBestMove(aiSymbol);
 
             if (bestMove != new Vector2Int(-1, -1))
             {
-                if (aiSymbol == 'O') // AI is O
+                if (aiSymbol == 'O') // AI is O.
                 {
                     gameManager.board[bestMove.x, bestMove.y] = 'O';
                     gameManager.slots[bestMove.x, bestMove.y].GetComponent<SlotManager>().OccupiedByO = true;
@@ -36,12 +36,12 @@ public class MinimaxAI : MonoBehaviour
                     turnManager.StartCoroutine(turnManager.StartPlayersTurn());
                     gameManager.CheckForWinner();
                 }
-                else // AI is X
+                else // AI is X.
                 {
                     gameManager.board[bestMove.x, bestMove.y] = 'X';
                     gameManager.slots[bestMove.x, bestMove.y].GetComponent<SlotManager>().OccupiedByX = true;
                     Instantiate(placeShapeScript.xShapePrefab, gameManager.slots[bestMove.x, bestMove.y].transform.position, gameManager.slots[bestMove.x, bestMove.y].transform.rotation);
-                    makeMoveAsPlayer = false; // Reset for next turn
+                    makeMoveAsPlayer = false; // Reset for next turn.
                     turnManager.StartCoroutine(turnManager.StartAITurn());
                     gameManager.CheckForWinner();
                 }
@@ -62,11 +62,11 @@ public class MinimaxAI : MonoBehaviour
         {
             for (int col = 0; col < 3; col++)
             {
-                if (gameManager.board[row, col] == 'E') // Empty slot
+                if (gameManager.board[row, col] == 'E') // Empty slot.
                 {
-                    gameManager.board[row, col] = aiSymbol; // Simulate AI move
-                    int score = Minimax(gameManager.board, false, aiSymbol); // Evaluate move
-                    gameManager.board[row, col] = 'E'; // Undo move
+                    gameManager.board[row, col] = aiSymbol; // Simulate AI move.
+                    int score = Minimax(gameManager.board, false, aiSymbol); // Evaluate move.
+                    gameManager.board[row, col] = 'E'; // Undo move.
 
                     if (score > bestScore)
                     {
@@ -81,12 +81,12 @@ public class MinimaxAI : MonoBehaviour
 
     private int Minimax(char[,] board, bool isMaximizing, char aiSymbol)
     {
-        char playerSymbol = (aiSymbol == 'X') ? 'O' : 'X'; // Opponent's symbol
+        char playerSymbol = (aiSymbol == 'X') ? 'O' : 'X'; // Opponent's symbol.
 
         char winner = gameManager.CheckWinnerDirect(board);
-        if (winner == playerSymbol) return -10; // Opponent wins
-        if (winner == aiSymbol) return 10;      // AI wins
-        if (IsDraw(board)) return 0;            // Draw
+        if (winner == playerSymbol) return -10; // Opponent wins.
+        if (winner == aiSymbol) return 10;      // AI wins.
+        if (IsDraw(board)) return 0;            // Draw.
 
         if (isMaximizing)
         {
@@ -95,11 +95,11 @@ public class MinimaxAI : MonoBehaviour
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    if (board[row, col] == 'E') // Empty spot
+                    if (board[row, col] == 'E') // Empty spot.
                     {
-                        board[row, col] = aiSymbol; // AI makes a move
-                        int score = Minimax(board, false, aiSymbol); // Opponent's turn
-                        board[row, col] = 'E'; // Undo move
+                        board[row, col] = aiSymbol; // AI makes a move.
+                        int score = Minimax(board, false, aiSymbol); // Opponent's turn.
+                        board[row, col] = 'E'; // Undo move.
                         bestScore = Mathf.Max(score, bestScore);
                     }
                 }
@@ -113,11 +113,11 @@ public class MinimaxAI : MonoBehaviour
             {
                 for (int col = 0; col < 3; col++)
                 {
-                    if (board[row, col] == 'E') // Empty spot
+                    if (board[row, col] == 'E') // Empty spot.
                     {
-                        board[row, col] = playerSymbol; // Opponent makes a move
-                        int score = Minimax(board, true, aiSymbol); // AI's turn
-                        board[row, col] = 'E'; // Undo move
+                        board[row, col] = playerSymbol; // Opponent makes a move.
+                        int score = Minimax(board, true, aiSymbol); // AI's turn.
+                        board[row, col] = 'E'; // Undo move.
                         bestScore = Mathf.Min(score, bestScore);
                     }
                 }
@@ -135,7 +135,7 @@ public class MinimaxAI : MonoBehaviour
                 if (board[i, j] == 'E') return false;
             }
         }
-        return true; // No empty spots, it's a draw
+        return true; // No empty spots, it's a draw.
     }
 }
 

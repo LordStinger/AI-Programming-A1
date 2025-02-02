@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 public class SlotManager : MonoBehaviour
 {
     GameManager gameManager;
-
-    private bool isEmpty = true;
     public char slotValue = 'E';
 
     private bool occupiedByX = false;
@@ -16,7 +14,7 @@ public class SlotManager : MonoBehaviour
         set
         {
             occupiedByX = value;
-            slotValue = value ? 'X' : 'E'; // If occupied by X, set slotValue to 'X', otherwise reset to 'E'
+            slotValue = value ? 'X' : 'E'; 
             gameManager.UpdateBoard();
         }
     }
@@ -29,7 +27,7 @@ public class SlotManager : MonoBehaviour
         set 
         { 
             occupiedByO = value; 
-            slotValue = value ? 'O' : 'E'; // If occupied by O, set slotValue to 'O', otherwise reset to 'E'
+            slotValue = value ? 'O' : 'E';
             gameManager.UpdateBoard();
         }
     }

@@ -29,11 +29,6 @@ public class GameManager : MonoBehaviour
         UpdateSkeletonBoard();
     }
 
-    private void Update() // TEMP REMOVE LATER
-    {
-
-    }
-
     private void ConvertTo2D()
     {
         for (int i = 0; i < 3; i++)
