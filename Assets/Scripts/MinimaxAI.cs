@@ -40,7 +40,7 @@ public class MinimaxAI : MonoBehaviour
                 {
                     gameManager.board[bestMove.x, bestMove.y] = 'X';
                     gameManager.slots[bestMove.x, bestMove.y].GetComponent<SlotManager>().OccupiedByX = true;
-                    Instantiate(placeShapeScript.xShapePrefab, gameManager.slots[bestMove.x, bestMove.y].transform.position, Quaternion.identity);
+                    Instantiate(placeShapeScript.xShapePrefab, gameManager.slots[bestMove.x, bestMove.y].transform.position, gameManager.slots[bestMove.x, bestMove.y].transform.rotation);
                     makeMoveAsPlayer = false; // Reset for next turn
                     turnManager.StartCoroutine(turnManager.StartAITurn());
                     gameManager.CheckForWinner();

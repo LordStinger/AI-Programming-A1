@@ -10,6 +10,11 @@ public class PlaceShapeScript : MonoBehaviour
     [SerializeField] public GameObject xShapePrefab;
     [SerializeField] public GameObject oShapePrefab;
 
+    private void Start()
+    {
+        AIOverride = PlayerSettings.Instance.AIvsAI;
+    }
+
     // Update is called once per frame
     void Update()
     {   

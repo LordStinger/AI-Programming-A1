@@ -10,6 +10,8 @@ public class TurnManager : MonoBehaviour
 
     private void Start()
     {
+        playerPlaysFirst = PlayerSettings.Instance.MoveFirst;
+
         minimaxAI = GetComponent<MinimaxAI>();
         placeShapeScript = GetComponent<PlaceShapeScript>();
         
